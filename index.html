@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Quimera Gym</title>
+    <meta name="description" content="Quimera Gym - Forje seu corpo, liberte sua força. Academia moderna com metodologia híbrida, equipamentos de ponta e acompanhamento personalizado.">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:700,900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black: #000000;
+            --red: #FF0000;
+            --white: #fff;
+            --gray: #222;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            background: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+        }
+        header {
+            background: var(--black);
+            padding: 24px 0 0 0;
+            text-align: center;
+        }
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: var(--red);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+        }
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            display: inline-block;
+        }
+        nav {
+            margin: 24px 0 0 0;
+        }
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            margin: 0 18px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: color 0.2s;
+        }
+        nav a:hover {
+            color: var(--red);
+        }
+        .banner {
+            position: relative;
+            width: 100%;
+            height: 60vh;
+            min-height: 340px;
+            background: url('https://images.unsplash.com/photo-1517960413843-0aee8e2d471c?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .banner-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.7);
+            z-index: 1;
+        }
+        .banner-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: var(--white);
+        }
+        .banner-content h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 18px;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 8px #000;
+        }
+        .banner-content .cta-btn {
+            background: var(--red);
+            color: var(--white);
+            border: none;
+            padding: 16px 36px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 32px;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 18px;
+            box-shadow: 0 2px 8px #0008;
+        }
+        .banner-content .cta-btn:hover {
+            background: #c40000;
+        }
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 48px 16px;
+        }
+        .section-title {
+            color: var(--red);
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 24px;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+        .diferenciais {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            justify-content: center;
+            margin-bottom: 56px;
+        }
+        .diferencial {
+            background: var(--gray);
+            border-radius: 16px;
+            padding: 32px 24px;
+            width: 260px;
+            text-align: center;
+            box-shadow: 0 2px 12px #0004;
+            transition: transform 0.2s;
+        }
+        .diferencial:hover {
+            transform: translateY(-8px) scale(1.03);
+        }
+        .diferencial-icon {
+            font-size: 2.5rem;
+            color: var(--red);
+            margin-bottom: 12px;
+        }
+        .diferencial-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .depoimentos {
+            display: flex;
+            gap: 32px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 56px;
+        }
+        .depoimento {
+            background: var(--gray);
+            border-radius: 16px;
+            padding: 24px 20px;
+            width: 320px;
+            box-shadow: 0 2px 12px #0004;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .depoimento img {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 12px;
+            border: 2px solid var(--red);
+        }
+        .depoimento-text {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            color: #eee;
+            text-align: center;
+        }
+        .depoimento-nome {
+            font-weight: 700;
+            color: var(--red);
+            font-size: 1.05rem;
+        }
+        .modalidades-preview {
+            display: flex;
+            gap: 32px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 56px;
+        }
+        .modalidade-card {
+            background: var(--gray);
+            border-radius: 16px;
+            padding: 24px 20px;
+            width: 220px;
+            text-align: center;
+            box-shadow: 0 2px 12px #0004;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .modalidade-card:hover {
+            transform: translateY(-8px) scale(1.04);
+            box-shadow: 0 4px 18px #0006;
+        }
+        .modalidade-icon {
+            font-size: 2.2rem;
+            color: var(--red);
+            margin-bottom: 10px;
+        }
+        .modalidade-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .cta-secundario {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 56px;
+        }
+        .cta-secundario-btn {
+            background: var(--red);
+            color: var(--white);
+            border: none;
+            padding: 14px 32px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 32px;
+            cursor: pointer;
+            transition: background 0.2s;
+            box-shadow: 0 2px 8px #0008;
+        }
+        .cta-secundario-btn:hover {
+            background: #c40000;
+        }
+        footer {
+            background: #111;
+            color: #bbb;
+            text-align: center;
+            padding: 32px 16px 16px 16px;
+            font-size: 1rem;
+            margin-top: 48px;
+        }
+        .footer-social {
+            margin: 12px 0;
+        }
+        .footer-social a {
+            color: var(--red);
+            margin: 0 10px;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .footer-social a:hover {
+            color: var(--white);
+        }
+        @media (max-width: 900px) {
+            .diferenciais, .depoimentos, .modalidades-preview {
+                flex-direction: column;
+                align-items: center;
+            }
+            .diferencial, .depoimento, .modalidade-card {
+                width: 90%;
+                max-width: 400px;
+            }
+        }
+        @media (max-width: 600px) {
+            .banner-content h1 { font-size: 1.5rem; }
+            .section-title { font-size: 1.3rem; }
+            main { padding: 32px 6px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+         <div class="logo">
+            <img src="logo_quimera_gym.png" alt="Logotipo Quimera Gym" class="logo-icon">
+            
+            Quimera Gym
+        </div>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#modalidades">Modalidades</a>
+            <a href="#planos">Planos</a>
+            <a href="#blog">Blog</a>
+            <a href="#contato">Contato</a>
+        </nav>
+    </header>
+
+    <section class="banner" id="home">
+        <div class="banner-overlay"></div>
+        <div class="banner-content">
+            <h1>Forje seu corpo, liberte sua força.</h1>
+            <button class="cta-btn" onclick="document.getElementById('contato').scrollIntoView({behavior:'smooth'})">
+                Agende uma Aula Experimental Gratuita
+            </button>
+        </div>
+    </section>
+
+    <main>
+        <h2 class="section-title">Nossos Diferenciais</h2>
+        <div class="diferenciais">
+            <div class="diferencial">
+                <div class="diferencial-icon">🦁</div>
+                <div class="diferencial-title">Metodologia Híbrida</div>
+                <div>Fusão de diferentes modalidades para resultados completos e personalizados.</div>
+            </div>
+            <div class="diferencial">
+                <div class="diferencial-icon">🏋️‍♂️</div>
+                <div class="diferencial-title">Equipamentos de Ponta</div>
+                <div>Estrutura moderna com aparelhos de última geração para máxima performance.</div>
+            </div>
+            <div class="diferencial">
+                <div class="diferencial-icon">👨‍🏫</div>
+                <div class="diferencial-title">Acompanhamento Personalizado</div>
+                <div>Profissionais qualificados acompanhando cada etapa da sua evolução.</div>
+            </div>
+        </div>
+
+        <h2 class="section-title">Depoimentos</h2>
+        <div class="depoimentos">
+            <div class="depoimento">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Aluno Quimera Gym">
+                <div class="depoimento-text">"Em 6 meses na Quimera Gym, conquistei resultados que nunca imaginei. O ambiente e os professores são incríveis!"</div>
+                <div class="depoimento-nome">Carlos M.</div>
+            </div>
+            <div class="depoimento">
+                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Aluna Quimera Gym">
+                <div class="depoimento-text">"A metodologia híbrida me motivou a treinar todos os dias. Recomendo para quem busca evolução de verdade."</div>
+                <div class="depoimento-nome">Juliana S.</div>
+            </div>
+            <div class="depoimento">
+                <img src="https://randomuser.me/api/portraits/men/65.jpg" alt="Aluno Quimera Gym">
+                <div class="depoimento-text">"A estrutura é impecável e o acompanhamento faz toda diferença. Me sinto parte de uma família!"</div>
+                <div class="depoimento-nome">Rafael T.</div>
+            </div>
+        </div>
+
+        <h2 class="section-title" id="modalidades">Modalidades</h2>
+        <div class="modalidades-preview">
+            <div class="modalidade-card">
+                <div class="modalidade-icon">🏋️</div>
+                <div class="modalidade-title">Musculação</div>
+                <div>Treinos para força, hipertrofia e condicionamento.</div>
+            </div>
+            <div class="modalidade-card">
+                <div class="modalidade-icon">🤸</div>
+                <div class="modalidade-title">Funcional</div>
+                <div>Movimentos dinâmicos para corpo e mente ativos.</div>
+            </div>
+            <div class="modalidade-card">
+                <div class="modalidade-icon">🥊</div>
+                <div class="modalidade-title">Lutas</div>
+                <div>Boxe,Tae-bo e mais para disciplina e defesa.</div>
+            </div>
+            <div class="modalidade-card">
+                <div class="modalidade-icon">🧘</div>
+                <div class="modalidade-title">Yoga</div>
+                <div>Equilíbrio, flexibilidade e bem-estar.</div>
+            </div>
+            <div class="modalidade-card">
+                <div class="modalidade-icon">🔥</div>
+                <div class="modalidade-title">Cross-training</div>
+                <div>Alta intensidade para superação de limites.</div>
+            </div>
+        </div>
+
+        <div class="cta-secundario">
+            <button class="cta-secundario-btn" onclick="document.getElementById('planos').scrollIntoView({behavior:'smooth'})">
+                Conheça Nossos Planos
+            </button>
+        </div>
+
+        <h2 class="section-title" id="sobre">Sobre Nós</h2>
+        <div style="max-width:700px;margin:0 auto 48px auto;text-align:center;">
+            <p>
+                <strong>Quimera Gym</strong> nasceu do conceito de transformação e superação. Inspirados na criatura mitológica, nossa metodologia une o melhor de cada modalidade para criar atletas completos e pessoas mais saudáveis. Aqui, cada treino é uma oportunidade de evoluir, guiado por profissionais apaixonados e uma estrutura de ponta.
+            </p>
+        </div>
+
+        <h2 class="section-title" id="planos">Planos e Preços</h2>
+        <div style="display:flex;gap:32px;flex-wrap:wrap;justify-content:center;margin-bottom:56px;">
+            <div style="background:var(--gray);border-radius:16px;padding:32px 24px;width:260px;text-align:center;box-shadow:0 2px 12px #0004;">
+                <div style="font-size:1.2rem;font-weight:700;color:var(--red);margin-bottom:8px;">Mensal</div>
+                <div style="font-size:2rem;font-weight:900;margin-bottom:12px;">R$ 70</div>
+                <ul style="list-style:none;text-align:left;margin-bottom:18px;">
+                    <li>✔️ Acesso total à academia</li>
+                    <li>✔️ Aulas coletivas</li>
+                    <li>✔️ Avaliação física</li>
+                </ul>
+                <button class="cta-secundario-btn">Assine Agora</button>
+            </div>
+            <div style="background:var(--gray);border-radius:16px;padding:32px 24px;width:260px;text-align:center;box-shadow:0 2px 12px #0004;">
+                <div style="font-size:1.2rem;font-weight:700;color:var(--red);margin-bottom:8px;">Trimestral</div>
+                <div style="font-size:2rem;font-weight:900;margin-bottom:12px;">R$ 200</div>
+                <ul style="list-style:none;text-align:left;margin-bottom:18px;">
+                    <li>✔️ Todos benefícios do plano mensal</li>
+                    <li>✔️ 1 sessão de personal grátis</li>
+                </ul>
+                <button class="cta-secundario-btn">Assine Agora</button>
+            </div>
+            <div style="background:var(--gray);border-radius:16px;padding:32px 24px;width:260px;text-align:center;box-shadow:0 2px 12px #0004;">
+                <div style="font-size:1.2rem;font-weight:700;color:var(--red);margin-bottom:8px;">Anual</div>
+                <div style="font-size:2rem;font-weight:900;margin-bottom:12px;">R$ 720</div>
+                <ul style="list-style:none;text-align:left;margin-bottom:18px;">
+                    <li>✔️ Todos benefícios do plano trimestral</li>
+                    <li>✔️ Camiseta exclusiva</li>
+                    <li>✔️ E-book de treino</li>
+                </ul>
+                <button class="cta-secundario-btn">Assine Agora</button>
+            </div>
+        </div>
+
+        <h2 class="section-title" id="blog">Blog & Notícias</h2>
+        <div style="display:flex;gap:32px;flex-wrap:wrap;justify-content:center;margin-bottom:56px;">
+            <div style="background:var(--gray);border-radius:16px;padding:24px 20px;width:320px;box-shadow:0 2px 12px #0004;">
+                <div style="font-weight:700;color:var(--red);margin-bottom:8px;">Dicas de Treino</div>
+                <div style="font-size:1.05rem;">Como montar um treino eficiente para iniciantes</div>
+            </div>
+            <div style="background:var(--gray);border-radius:16px;padding:24px 20px;width:320px;box-shadow:0 2px 12px #0004;">
+                <div style="font-weight:700;color:var(--red);margin-bottom:8px;">Nutrição</div>
+                <div style="font-size:1.05rem;">Alimentação pré e pós-treino: o que comer?</div>
+            </div>
+            <div style="background:var(--gray);border-radius:16px;padding:24px 20px;width:320px;box-shadow:0 2px 12px #0004;">
+                <div style="font-weight:700;color:var(--red);margin-bottom:8px;">Eventos</div>
+                <div style="font-size:1.05rem;">Desafio Quimera: participe e supere seus limites!</div>
+            </div>
+        </div>
+
+        <h2 class="section-title" id="contato">Contato</h2>
+        <div style="display:flex;flex-wrap:wrap;gap:32px;justify-content:center;align-items:flex-start;">
+            <form style="background:var(--gray);border-radius:16px;padding:32px 24px;min-width:280px;max-width:340px;flex:1;" autocomplete="off">
+                <div style="margin-bottom:16px;">
+                    <label for="nome" style="display:block;font-weight:700;margin-bottom:6px;">Nome</label>
+                    <input type="text" id="nome" name="nome" required style="width:100%;padding:10px;border-radius:8px;border:none;">
+                </div>
+                <div style="margin-bottom:16px;">
+                    <label for="email" style="display:block;font-weight:700;margin-bottom:6px;">E-mail</label>
+                    <input type="email" id="email" name="email" required style="width:100%;padding:10px;border-radius:8px;border:none;">
+                </div>
+                <div style="margin-bottom:16px;">
+                    <label for="mensagem" style="display:block;font-weight:700;margin-bottom:6px;">Mensagem</label>
+                    <textarea id="mensagem" name="mensagem" rows="3" required style="width:100%;padding:10px;border-radius:8px;border:none;"></textarea>
+                </div>
+                <button type="submit" class="cta-secundario-btn" style="width:100%;">Enviar</button>
+            </form>
+            <div style="flex:1;min-width:260px;max-width:340px;">
+                <div style="margin-bottom:12px;">
+                    <strong>Endereço:</strong> Rua Exemplo, 123 - Centro, Sua Cidade
+                </div>
+                <div style="margin-bottom:12px;">
+                    <strong>Telefone:</strong> <a href="tel:+5511999999999" style="color:var(--red);text-decoration:none;">(79) 99877-8658</a>
+                </div>
+                <div style="margin-bottom:12px;">
+                    <strong>E-mail:</strong> <a href="mailto:contato@quimeragym.com" style="color:var(--red);text-decoration:none;">contato@quimeragym.com</a>
+                </div>
+                <div style="margin-bottom:12px;">
+                    <strong>Horário:</strong> Seg a Sex: 5h às 11h e das 13h às 21h | Sáb: 8h às 11h
+                </div>
+                <div style="margin-bottom:12px;">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.123456789!2d-46.6561234!3d-23.5641234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zU3VhIENpZGFkZQ!5e0!3m2!1spt-BR!2sbr!4v1710000000000" width="100%" height="120" style="border:0;border-radius:8px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <div class="footer-social">
+                    <a href="#" aria-label="Instagram"><span>📸</span></a>
+                    <a href="#" aria-label="Facebook"><span>📘</span></a>
+                    <a href="#" aria-label="TikTok"><span>🎵</span></a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div>
+            &copy; 2025 Quimera Gym. Todos os direitos reservados.
+        </div>
+        <div style="margin-top:8px;">
+            Desenvolvido por sua equipe.
+        </div>
+    </footer>
+</body>
+</html></div>
